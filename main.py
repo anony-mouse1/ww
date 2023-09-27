@@ -34,7 +34,7 @@ def calculate_angle(a, b, c):
 def main():
 
     #title 
-    st.title('Workout Wizard')
+    st.title('Workout Wiz')
 
     #sidebar title
     st.sidebar.title('Choose your exercise')
