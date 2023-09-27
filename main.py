@@ -14,7 +14,7 @@ import tempfile
 #mediapipe inbuilt solutions 
 mp_face_detection = mp.solutions.face_detection
 mp_drawing = mp.solutions.drawing_utils
-# st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 
 def calculate_angle(a, b, c):
@@ -96,20 +96,19 @@ def main():
     col1, col2 = st.columns(2)
 
     vid = cv2.VideoCapture(0)
-    # instructor = cv2.VideoCapture('squat.mp4')
+    instructor = cv2.VideoCapture('squat.mp4')
 
-    #UNCOMMENT below part out once u know that the other programming parts work. 
-    # if instructor.isOpened():
-    #     ret2, image2 = instructor.read()
+    if instructor.isOpened():
+        ret2, image2 = instructor.read()
         
-    #     if ret2:
-    #         with col2:
-    #             st.video('squat.mp4')
+        if ret2:
+            with col2:
+                st.video('squat.mp4')
     
     with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose1, \
         mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose2:
         
-        while vid.isOpened():
+        while vid.isOpened() and instructor.isOpened():
             
             ret, image = vid.read()
             resized_frame = cv2.resize(image, (600,800))
@@ -124,7 +123,7 @@ def main():
             # image2 = cv2.cvtColor(image2, cv2.COLOR_BGR2RGB)
 
             results = pose1.process(image) #previously image_rgb
-            # results2 = pose2.process(image2)
+            results2 = pose2.process(image2)
 
             if results.pose_landmarks:
                 landmarks1 = results.pose_landmarks.landmark
