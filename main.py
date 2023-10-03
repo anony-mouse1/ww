@@ -10,7 +10,7 @@ from streamlit_webrtc import webrtc_streamer
 # Then, pass the ICE server information to webrtc_streamer().
 # Download the helper library from https://www.twilio.com/docs/python/install
 import os
-from twilio.rest import Client
+# from twilio.rest import Client
 
 account_sid = os.environ['TWILIO_ACCOUNT_SID']
 auth_token = os.environ['TWILIO_AUTH_TOKEN']
