@@ -13,8 +13,9 @@ import os
 
 from streamlit_webrtc import webrtc_streamer
 
+#configure STUN server 
 webrtc_streamer(key="sample", rtc_configuration={  # Add this config
-        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+        "iceServers": [{"urls": ["stun:stun.xten.com:3478"]}]
     })
 
 # Find your Account SID and Auth Token at twilio.com/console
