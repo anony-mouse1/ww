@@ -10,20 +10,21 @@ from streamlit_webrtc import webrtc_streamer
 # Then, pass the ICE server information to webrtc_streamer().
 # Download the helper library from https://www.twilio.com/docs/python/install
 import os
+# import twilio
 # from twilio.rest import Client
 
-account_sid = os.environ['TWILIO_ACCOUNT_SID']
-auth_token = os.environ['TWILIO_AUTH_TOKEN']
-client = Client(account_sid, auth_token)
+# account_sid = os.environ['TWILIO_ACCOUNT_SID']
+# auth_token = os.environ['TWILIO_AUTH_TOKEN']
+# client = Client(account_sid, auth_token)
 
-token = client.tokens.create()
+# token = client.tokens.create()
 
 #configure STUN server 
 
-webrtc_streamer(key="sample", rtc_configuration={"iceServers": token.ice_servers})
-# webrtc_streamer(key="sample", rtc_configuration={  # Add this config
-#         "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
-#     })
+# webrtc_streamer(key="sample", rtc_configuration={"iceServers": token.ice_servers})
+webrtc_streamer(key="sample", rtc_configuration={  # Add this config
+        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+    })
 
 # Find your Account SID and Auth Token at twilio.com/console
 # and set the environment variables. See http://twil.io/secure
